@@ -1,0 +1,63 @@
+<form [formGroup]="this.formGroup">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <pre>DockerFile attributes</pre>
+                <nav>
+                    <ul>
+                        <li><a>template</a>
+                            <!-- First Tier Drop Down -->
+                            <ul>
+                                <li><a (click)="modifySpringbootTemplate()">springboot</a></li>
+                                <li><a (click)="modifyAngularTemplate()">angular</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="映像檔名稱/ image name" formControlName="imageName">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="編譯環境/ complie env" formControlName="builderEnv">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="編譯來源資料夾/ complie source dir" formControlName="builderSourceDir">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="編譯執行command/ complie run command" formControlName="builderRun">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="容器環境/ container env" formControlName="containerEnv">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="容器來源/ container source" formControlName="containerSource">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="容器目標/ container target"
+                    formControlName="containerTarget">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="容器執行command/ container run command" formControlName="containerRun">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="容器EntryPoint/ container entry point"
+                    formControlName="containerEntry">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="應用程式port號/ application port" formControlName="applicationPort">
+            </div>
+            <div class="col-12 formGroup">
+                <input type="text" class="form-input" placeholder="對外開放port號/ expose port" formControlName="exposePort">
+            </div>
+        </div>
+
+    </div>
+</form>
