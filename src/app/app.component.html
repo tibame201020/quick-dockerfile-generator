@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col"><hr></div>
+    <div class="col">
+      <hr>
+    </div>
   </div>
   <div class="row">
     <div class="col-6">
@@ -27,7 +29,9 @@
         </div>
         <div class="row" *ngIf="this.generator_type">
           <div class="col" *ngIf="this.generator_type == 'dockerfile'">
-            <app-dockerfile-generator (dockerFileContent)="addDockerFileContent($event)" (dockerBuildCommand)="addDockerBuildCommand($event)" (dockerRunCommand)="addDockerRunCommand($event)"></app-dockerfile-generator>
+            <app-dockerfile-generator (dockerFileContent)="addDockerFileContent($event)"
+              (dockerBuildCommand)="addDockerBuildCommand($event)" (dockerRunCommand)="addDockerRunCommand($event)">
+            </app-dockerfile-generator>
           </div>
           <div class="col" *ngIf="this.generator_type == 'docker-compose'">
             <app-docker-compose-generator></app-docker-compose-generator>
@@ -44,11 +48,14 @@
         </div>
         <div class="row" *ngIf="this.mainCodeBlock">
           <div class="col">
-            <app-copied-board [text]='mainCodeBlock' [type]="this.generator_type == 'dockerfile'? 'dockerfile':'docker-compose.yaml'"></app-copied-board>
+            <app-copied-board [text]='mainCodeBlock'
+              [type]="this.generator_type == 'dockerfile'? 'dockerfile':'docker-compose.yaml'"></app-copied-board>
           </div>
         </div>
         <div class="row" *ngIf="this.buildCommand">
-          <div class="col"><hr></div>
+          <div class="col">
+            <hr>
+          </div>
         </div>
         <div class="row" *ngIf="this.buildCommand">
           <div class="col">
@@ -73,6 +80,29 @@
         <div class="row" *ngIf="this.runCommand">
           <div class="col">
             <app-copied-board [text]="runCommand" [type]="'shell'"></app-copied-board>
+          </div>
+        </div>
+        <div class="row" *ngIf="this.nginxExternal">
+          <div class="col">
+            <hr>
+          </div>
+        </div>
+        <div class="row" *ngIf="this.nginxExternal">
+          <div class="col">
+            <h2>external</h2>
+          </div>
+        </div>
+        <div class="row" *ngIf="this.nginxExternal">
+          <div class="col">
+            <app-copied-board [text]="'server { 
+  listen       $PORT;
+  listen  [::]:$PORT;
+  location / { 
+    root /usr/share/nginx/html;
+    index index.html index.html;
+    try_files $uri $uri/ /index.html; 
+  }
+}'" [type]="'nginx-custom.conf'"></app-copied-board>
           </div>
         </div>
       </div>

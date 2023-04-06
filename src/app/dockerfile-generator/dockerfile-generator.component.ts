@@ -46,9 +46,9 @@ export class DockerfileGeneratorComponent {
       builderRun: 'mvn clean package -Dmaven.test.skip=true',
       containerEnv: 'openjdk:8-jdk-alpine',
       containerSource: '--from=builder /buildDir/target/springboot.jar',
-      containerTarget: 'springboot.jar',
+      containerTarget: 'app/springboot.jar',
       containerRun: '',
-      containerEntry: ["java", "-jar", "springboot.jar"],
+      containerEntry: 'java, -jar, springboot.jar',
       applicationPort: '8080',
       exposePort: '8081',
     });
@@ -57,14 +57,14 @@ export class DockerfileGeneratorComponent {
   modifyAngularTemplate() {
     this.formGroup.patchValue({
       imageName: 'frontImg',
-      builderEnv: '',
+      builderEnv: 'node:alpine',
       builderSourceDir: '.',
-      builderRun: '',
-      containerEnv: '',
-      containerSource: '',
-      containerTarget: '',
+      builderRun: 'npm run build --output-path=./dist/frontend --prod',
+      containerEnv: 'nginx:alpine',
+      containerSource: '--from=builder /buildDir/dist/frontend',
+      containerTarget: '/usr/share/nginx/html',
       containerRun: '',
-      containerEntry: [],
+      containerEntry: `/bin/sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'`,
       applicationPort: '',
       exposePort: '',
     });

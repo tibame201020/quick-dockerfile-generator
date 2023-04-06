@@ -14,6 +14,7 @@ export class AppComponent {
   type = 'shell'
   generator_type ='dockerfile';
   constructor(){}
+  nginxExternal = false;
 
   changeGeneratorType(generator_type:string) {
     this.generator_type = generator_type;
@@ -23,6 +24,13 @@ export class AppComponent {
   }
 
   addDockerFileContent(dockerFileContent: string) {
+
+    if (dockerFileContent.includes('nginx')) {
+      this.nginxExternal = true;
+    } else{
+      this.nginxExternal = false;
+    }
+
     this.mainCodeBlock = dockerFileContent;
   }
   addDockerBuildCommand(command:string) {
