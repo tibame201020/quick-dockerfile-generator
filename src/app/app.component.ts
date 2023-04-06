@@ -17,10 +17,16 @@ export class AppComponent {
   nginxExternal = false;
 
   changeGeneratorType(generator_type:string) {
+
+    if (generator_type === this.generator_type) {
+      return;
+    }
+
     this.generator_type = generator_type;
     this.mainCodeBlock = ' ';
     this.buildCommand = '';
     this.runCommand = ' ';
+    this.nginxExternal = false;
   }
 
   addDockerFileContent(dockerFileContent: string) {

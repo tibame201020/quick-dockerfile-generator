@@ -90,3 +90,7 @@ li>a:only-child:after {
 nav {
     z-index: 999;
 }
+
+.cursors {
+    cursor: pointer;
+}

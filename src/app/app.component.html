@@ -17,8 +17,8 @@
                 <li><a>{{generator_type}}</a>
                   <!-- First Tier Drop Down -->
                   <ul>
-                    <li><a (click)="changeGeneratorType('dockerfile')">dockerfile</a></li>
-                    <li><a (click)="changeGeneratorType('docker-compose')">docker-compose</a></li>
+                    <li><a (click)="changeGeneratorType('dockerfile')" [ngClass]="{'cursors': this.generator_type != 'dockerfile' }">dockerfile</a></li>
+                    <li><a (click)="changeGeneratorType('docker-compose')" [ngClass]="{'cursors': this.generator_type != 'docker-compose' }">docker-compose</a></li>
                   </ul>
                 </li>
               </ul>
